@@ -1,15 +1,15 @@
 version: '3.7'
 services:
-#  dynamodb-local:
-#    image: amazon/dynamodb-local
-#    container_name: dynamodb-local
-#    networks:
-#      - aws-sam-app-net
-#    ports:
-#      - "8000:8000"
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
+    networks:
+      - aws-sam-app-net
+    ports:
+      - "8000:8000"
   aws-sam-local:
-#    depends_on:
-#      - dynamodb-local
+    depends_on:
+      - dynamodb-local
     image: lambci/lambda:build-nodejs12.x
     container_name: aws-sam-local
     hostname: aws-sam-local
