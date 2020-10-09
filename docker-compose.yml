@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+#  dynamodb-local:
+#    image: amazon/dynamodb-local
+#    container_name: dynamodb-local
+#    networks:
+#      - aws-sam-app-net
+#    ports:
+#      - "8000:8000"
+  aws-sam-local:
+#    depends_on:
+#      - dynamodb-local
+    image: lambci/lambda:build-nodejs12.x
+    container_name: aws-sam-local
+    hostname: aws-sam-local
+    networks:
+      - aws-sam-app-net
+    ports:
+     - "3000:3000"
+    environment:
+      AWS_ACCESS_KEY_ID: 'DUMMYEXAMPLEID'
+      AWS_SECRET_ACCESS_KEY: 'DUMMYEXAMPLEKEY'
+    volumes:
+      - $PWD/sam-app:$PWD/sam-app
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: $PWD/sam-app
+    command:
+      - /bin/sh
+      - -c
+      - sam local start-api --host aws-sam-local
+
+networks:
+  aws-sam-app-net:
+    external: false
+    driver: bridge
+    name: aws-sam-app-net
