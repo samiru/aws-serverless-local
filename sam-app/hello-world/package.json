@@ -10,10 +10,16 @@
     "axios": "^0.18.0"
   },
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
     "test": "mocha tests/unit/"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.63",
+    "@types/node": "^14.11.8",
+    "aws-sdk": "^2.771.0",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "typescript": "^4.0.3"
   }
 }
