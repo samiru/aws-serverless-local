@@ -17,8 +17,6 @@ let response;
  *
  */
 export const lambdaHandler: APIGatewayProxyHandler = async (event, context) => {
-  console.log("XXXXXXXXXXXXXXX");
-
 
   try {
     // const ret = await axios(url);

@@ -27,7 +27,7 @@ services:
     command:
       - /bin/sh
       - -c
-      - sam local start-api --host aws-sam-local
+      - sam local start-api --host aws-sam-local --debug & ./hello-world/node_modules/typescript/bin/tsc --watch --project ./hello-world
 
 networks:
   aws-sam-app-net:
